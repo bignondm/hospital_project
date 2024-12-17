@@ -47,7 +47,7 @@ project/
 ### Étapes
 1. Clonez ce dépôt :
    ```bash
-   git clone <URL_DU_DÉPÔT>
+   git clone <https://github.com/CodesVibes229/hospital_project.git>
    cd project
    ```
 
