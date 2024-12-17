@@ -118,4 +118,4 @@ Ajoute un nouvel hôpital.
 ---
 
 ## Auteur
-Développé par [Harold ATCHEKPE].
+Développé par [Harold].
