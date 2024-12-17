@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify, render_template, redirect,url_for
 import sqlite3
 
-app = Flask(__name__, template_folder='../frontend/templates', static_folder='frontend/static')
+app = Flask(__name__, template_folder='../frontend/templates', static_folder='static')
 DATABASE = 'database.db'
 
 #Connection à la base de données
@@ -83,10 +83,3 @@ def delete_hospital(hospital_id):
 if __name__ == '__main__':
     app.run(debug=True)
 
-
-""" 
-cardiographie
-réanimation
-accouchement
-
-"""
