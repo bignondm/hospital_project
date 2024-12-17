@@ -18,8 +18,7 @@ project/
 │   ├── app.py                 # Serveur Flask et routes principales
 │   ├── database.db            # Fichier SQLite pour stocker les données
 │   ├── init_db.py             # Script pour initialiser la base de données
-│   └── models.py              # (Facultatif) Gestion des modèles de données
-│
+│   │
 ├── frontend/
 │   ├── templates/             # Pages HTML
 │   │   ├── index.html         # Page d'accueil
@@ -31,7 +30,7 @@ project/
 │       │   └── styles.css     # Feuille de styles
 │       ├── js/
 │       │   └── scripts.js     # Scripts JavaScript
-│       └── images/            # Images (si nécessaire)
+│       └── images/            # Images
 │
 └── README.md                  # Documentation du projet
 ```
