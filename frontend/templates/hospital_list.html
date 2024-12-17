@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des Hôpitaux</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Logo" width="100">
+        <h1>Liste des Hôpitaux</h1>
+        <a href="/">Retour à l'accueil</a>
+    </header>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Adresse</th>
+                <th>Téléphone</th>
+                <th>Disponibilité</th>
+                <th>Services</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for hospital in hospitals %}
+                <tr>
+                    <td>{{ hospital['name'] }}</td>
+                    <td>{{ hospital['address'] }}</td>
+                    <td>{{ hospital['phone'] }}</td>
+                    <td>{{ hospital['availability'] }}</td>
+                    <td>{{ hospital['services'] }}</td>
+                    <td>
+                        <a href="{{ url_for('delete_hospital', hospital_id=hospital['id']) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet hôpital ?');">
+                            Supprimer
+                        </a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="6">Aucun hôpital enregistré.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch('/api/hospitals')
+                .then(response => response.json())
+                .then(data => {
+                    const hospitalList = document.getElementById('hospital-list');
+                    if (data.length === 0) {
+                        hospitalList.innerHTML = "<p>Aucun hôpital trouvé.</p>";
+                    } else {
+                        data.forEach(hospital => {
+                            const div = document.createElement('div');
+                            div.innerHTML = `
+                                <h3>${hospital.name}</h3>
+                                <p><strong>Adresse :</strong> ${hospital.address}</p>
+                                <p><strong>Téléphone :</strong> ${hospital.phone}</p>
+                                <p><strong>Disponibilité :</strong> ${hospital.availability}</p>
+                                <p><strong>Services :</strong> ${hospital.services}</p>
+                                <hr>
+                            `;
+                            hospitalList.appendChild(div);
+                        });
+                    }
+                })
+                .catch(err => console.error('Erreur lors de la récupération des hôpitaux :', err));
+        });
+    </script>
+</body>
+</html>
+
+

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Logo" width="100">
+
+        <h1>Bienvenue sur le Système de Gestion des Hôpitaux</h1>
+        <a href="/hospitals">Voir la Liste des Hôpitaux</a>
+    </header>
+    <div class="content">
+        <p>Un endroit où vous pouvez facilement accéder à toutes les informations sur les hôpitaux, les centres de santé, les cliniques et les dispensaires de votre région.</p>
+        <a href="/add-hospital" class="button">Ajouter un Hôpital</a>
+    </div>
+</body>
+</html>
